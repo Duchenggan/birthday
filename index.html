@@ -25,21 +25,49 @@
       background-size: 100% 100%;
     }
 
-    .audio {
+    .Audio {
+      width: 100px;
+      height: 100px;
       position: absolute;
-      bottom: 50px;
       left: 0;
       right: 0;
+      bottom: 50px;
       margin: auto;
     }
+
+    .play {
+      width: 100px;
+      height: 100%;
+      background-image: url('./play.png');
+      background-size: 100% 100%;
+    }
+
+
   </style>
 </head>
 
 <body>
-
-  <audio controls="controls" class="audio" autoplay>
-    <source src="./111.mp3" type="audio/mpeg"> Your browser does not support the audio element.
-  </audio>
+  <div class="Audio">
+    <audio id="audioTag" src="./111.mp3" ></audio>
+    <div id="play" class="play"></div>
+</div>
+<script>
+  var play = document.getElementById('play');
+  var audio = document.getElementById('audioTag')
+  var flag = true;
+  play.onclick = function () {
+    if (flag) {
+      play.style.backgroundImage = "url('./stop.png')"
+      audio.play()
+      flag = false;
+    } else {
+      play.style.backgroundImage = "url('./play.png')"
+      audio.pause()
+      flag = true;
+    }
+    
+  }
+</script>
 
 </body>
 
